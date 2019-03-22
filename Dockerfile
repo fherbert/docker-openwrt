@@ -21,5 +21,5 @@ RUN git checkout itronhab_master && \
     cp feeds/itron/pwm-ir-tx/999-lirc_bufsize.patch target/linux/generic/pending-4.14/ && \
     scripts/feeds install -a && \
     cp /home/itron/itronconfig/diffconfig .config && make defconfig
-RUN make download
+RUN make download && make toolchain/install -j4
 CMD ["bash"]
