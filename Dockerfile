@@ -12,5 +12,5 @@ RUN echo "src-git itron git@server.herbert.org.nz:itron/itron-feed.git;feature/r
     scripts/feeds install -a -p itron && \
     cp feeds/itron/rc/rc.mk package/kernel/linux/modules/rc.mk && \
     cp feeds/itron/rc/kernel-patches/999-lirc_bufsize.patch target/linux/ramips/patches-4.14/ && \
-    make download
+    make download && make defconfig
 CMD ["bash"]
