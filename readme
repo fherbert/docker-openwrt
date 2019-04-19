@@ -1,5 +1,5 @@
 #build the container
-docker build . -t lede_itronhab:17.01	.4
+docker build . -t lede_itronhab:17.01.4
 
 # running this container
 docker run -i -t lede_itronhab:17.01.4 /bin/bash
