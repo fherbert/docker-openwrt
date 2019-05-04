@@ -7,10 +7,11 @@ RUN scripts/feeds update -a && \
     scripts/feeds install -a && \
     cp /home/itron/itronconfig/diffconfig .config && make defconfig && \
     make download && make toolchain/install -j4
-RUN echo "src-git itron git@server.herbert.org.nz:itron/itron-feed.git;feature/reorganise_rc_module" >> feeds.conf && \
+RUN echo "src-git itron git@server.herbert.org.nz:itron/itron-feed.git" >> feeds.conf && \
     scripts/feeds update -a itron && \
     scripts/feeds install -a -p itron && \
     cp feeds/itron/rc/rc.mk package/kernel/linux/modules/rc.mk && \
+    touch package/kernel/linux/Makefile && \
     cp feeds/itron/rc/kernel-patches/999-lirc_bufsize.patch target/linux/ramips/patches-4.14/ && \
     make download && make defconfig
 CMD ["bash"]
