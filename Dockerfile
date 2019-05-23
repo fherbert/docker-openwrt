@@ -3,7 +3,8 @@ FROM deb_build_base:latest
 ADD configs /home/itron/itronconfig
 RUN git clone --branch itronhab_master git@server.herbert.org.nz:fherbert1/lede.git
 WORKDIR /home/itron/lede
-RUN scripts/feeds update -a && \
+RUN cp feeds.conf.default feeds.conf && \
+    scripts/feeds update -a && \
     scripts/feeds install -a && \
     cp /home/itron/itronconfig/diffconfig .config && make defconfig && \
     make download && make toolchain/install -j4
